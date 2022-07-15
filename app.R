@@ -4393,7 +4393,7 @@ server <- function(input, output, session) {
   
   output$downloadscatter_collage <- downloadHandler(
     filename = function() {
-      paste("heatscatter_collage", ".pdf", sep = "")
+      paste("heatscatter_collage", ".html", sep = "")
     },
     content = function(file) {
       pdf(file)
@@ -4434,7 +4434,7 @@ server <- function(input, output, session) {
   
   output$downloaddist <- downloadHandler(
     filename = function() {
-      paste("distribution_fit", ".pdf", sep = "")
+      paste("distribution_fit", "..html", sep = "")
     },
     content = function(file) {
       pdf(file)
