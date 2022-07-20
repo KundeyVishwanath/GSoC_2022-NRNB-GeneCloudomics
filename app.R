@@ -1149,6 +1149,7 @@ ui <- tagList(
                ###### ENTROPY #############
                #########################################
                tabPanel(
+                 
                  "Entropy",
                  sidebarPanel(
                    checkboxInput("tsflag", strong("Time series data"), FALSE),
@@ -4390,25 +4391,13 @@ server <- function(input, output, session) {
     })
     
   })
-  
-  output$downloadscatter_collage <- downloadHandler(
+  output$downloadentropy <- downloadHandler(
     filename = function() {
-      paste("heatscatter_collage", ".html", sep = "")
+      paste("hearscatter", ".png", sep = "")
     },
     content = function(file) {
-      pdf(file)
-      scatterplot_collage()
-      dev.off()
-    }
-  )
-  
-  output$downloadscatter <- downloadHandler(
-    filename = function() {
-      paste("heatscatter", ".png", sep = "")
-    },
-    content = function(file) {
-      htmlwidgets::saveWidget(widget = scatterplot(), file = "scatterplot.html")
-      webshot(url = "scatterplot.html", file = file)
+      htmlwidgets::saveWidget(widget = entropyPlot(), file = "scatter.html")
+      webshot(url = "scatter.html", file = file)
     }
   )
   
@@ -4434,7 +4423,7 @@ server <- function(input, output, session) {
   
   output$downloaddist <- downloadHandler(
     filename = function() {
-      paste("distribution_fit", "..html", sep = "")
+      paste("distribution_fit", ".pdf", sep = "")
     },
     content = function(file) {
       pdf(file)
@@ -5270,7 +5259,7 @@ server <- function(input, output, session) {
   
   output$download_volcano <- downloadHandler(
     filename = function() {
-      paste0("Volcano", ".pdf")
+      paste0("Volcano", ".pdf")#pdf
     },
     content = function(file) {
       pdf(file)
